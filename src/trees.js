@@ -5,7 +5,7 @@ class Tree {
     }
 
     /*
-     * Depth-First (Pre-order) Traversal
+     * Depth-First (Pre-order) Traversal -> root, left, right
      *
      * Iterates over each node and calls a callback function for each of them
      */

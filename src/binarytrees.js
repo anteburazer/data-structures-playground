@@ -6,25 +6,90 @@ class BinaryTree {
     } 
 
     insertChild(value) {
-        // if (this.)
-    } 
+        const newChild = new BinaryTree(value);
+        const queue = [this];
+        let childInserted = false;
+
+        while (queue.length && !childInserted) {
+            const currentNode = queue.shift();
+            
+            if (!currentNode.left) {
+                currentNode.left = newChild;
+                childInserted = true;
+            } else if (!currentNode.right) {
+                currentNode.right = newChild;
+                childInserted = true;
+            } else {
+                queue.push(currentNode.left);
+                queue.push(currentNode.right);
+            }
+        }
+
+        return newChild;
+    }
+
+    contains(value) {
+
+    }
 
     // left, root, right
-    inOrderTraversal(func = console.log) {
+    inOrderTraversal(callback) {
+        if (this.left) {
+            this.left.inOrderTraversal(callback);
+        }
+
+        callback(this);
+
+        if (this.right) {
+            this.right.inOrderTraversal(callback);
+        }
     } 
 
     // root, left, right
-    preOrderTraversal(func = console.log) {
+    preOrderTraversal(callback) {
+        callback(this);
+
+        if (this.left) {
+            this.left.preOrderTraversal(callback);
+        }
+
+        if (this.right) {
+            this.right.preOrderTraversal(callback);
+        }
     } 
 
     // left, right, root
-    postOrderTraversal(func = console.log) {
+    postOrderTraversal(callback) {
+        if (this.left) {
+            this.left.postOrderTraversal(callback);
+        }
+
+        if (this.right) {
+            this.right.postOrderTraversal(callback);
+        }
+
+        callback(this);
     }
 }
 console.log('\n TREES - BINARY TREE \n\n');
 
-const Burazeri = new BinaryTree('Burazeri');
+const binaryTree = new BinaryTree(1);
 
+binaryTree.insertChild(2);
+binaryTree.insertChild(3);
+binaryTree.insertChild(4);
+binaryTree.insertChild(5);
+binaryTree.insertChild(6);
 
+console.log('\n Binary tree: ', binaryTree);
+
+console.log('\n Pre-order traversal');
+binaryTree.preOrderTraversal(node => console.log(node.value));
+
+console.log('\n In-order traversal');
+binaryTree.inOrderTraversal(node => console.log(node.value));
+
+console.log('\n Post-order traversal');
+binaryTree.postOrderTraversal(node => console.log(node.value));
 
 export default BinaryTree;
