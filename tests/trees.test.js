@@ -199,7 +199,7 @@ describe('the remove function', () => {
   });
 });
 
-describe('the reorder function', () => {
+describe('the replaceValues function', () => {
   beforeEach(() => {
     tree.insertChild(2);
     tree.insertChild(3);
@@ -218,7 +218,7 @@ describe('the reorder function', () => {
   });
 
   test('should be a function', () => {
-    expect(typeof tree.reorder).toBe('function');
+    expect(typeof tree.replaceValues).toBe('function');
   });
 
 
@@ -226,7 +226,7 @@ describe('the reorder function', () => {
     Tree.traverse(tree, logger.log);
     const initialIndex1 = logger.values.indexOf(2.21);
     const initialIndex2 = logger.values.indexOf(2.3);
-    tree.reorder(2.21, 2.3);
+    tree.replaceValues(2.21, 2.3);
     Tree.traverse(tree, logger.log);
     const reorderedIndex1 = logger.values.indexOf(2.21);
     const reorderedIndex2 = logger.values.indexOf(2.3);
@@ -238,7 +238,7 @@ describe('the reorder function', () => {
     Tree.traverse(tree, logger.log);
     const initialIndex1 = logger.values.indexOf(2.21);
     const initialIndex2 = logger.values.indexOf(2.3);
-    tree.reorder(2.3, 4);
+    tree.replaceValues(2.3, 4);
     Tree.traverse(tree, logger.log);
     const indexAfterReorder1 = logger.values.indexOf(2.21);
     const indexAfterReorder2 = logger.values.indexOf(2.3);

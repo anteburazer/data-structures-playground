@@ -48,7 +48,7 @@ class Tree {
             }
         });
 
-        return result;
+        return result || false;
     }
 
     /*
