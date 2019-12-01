@@ -29,7 +29,14 @@ class BinaryTree {
     }
 
     contains(value) {
+        if (this.value === value) {
+            return true;
+        }
 
+        const leftContainsValue = this.left && this.left.contains(value) ? true : false;
+        const rightContainsValue = this.right && this.right.contains(value) ? true : false;
+
+        return leftContainsValue || rightContainsValue;
     }
 
     // left, root, right
@@ -91,5 +98,9 @@ binaryTree.inOrderTraversal(node => console.log(node.value));
 
 console.log('\n Post-order traversal');
 binaryTree.postOrderTraversal(node => console.log(node.value));
+
+console.log('\n Tree contains 3: ', binaryTree.contains(3));
+console.log('\n Tree contains 5: ', binaryTree.contains(5));
+console.log('\n Tree contains 7: ', binaryTree.contains(7));
 
 export default BinaryTree;
