@@ -78,7 +78,7 @@ class BinaryTree {
         callback(this);
     }
 }
-console.log('\n TREES - BINARY TREE \n\n');
+console.log('\n TREES - BINARY TREE \n--------------------------------------------------\n');
 
 const binaryTree = new BinaryTree(1);
 

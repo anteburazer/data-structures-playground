@@ -101,7 +101,7 @@ class Tree {
         node2.value = value1;
     }
 }
-console.log('\n TREES - BASIC CONCENT \n\n');
+console.log('\n TREES - BASIC CONCENT \n--------------------------------------------------\n');
 
 const Smiths = new Tree('Smiths');
 const Mike = Smiths.insertChild('Mike');
