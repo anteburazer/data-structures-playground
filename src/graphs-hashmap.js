@@ -2,7 +2,7 @@ import { cloneDeep } from 'lodash';
 
 /*
  * Graph representation using adjacency list with HashMap implementation
- * This is Unidirected graph
+ * This is Undirected graph
  *
  * const adjList = {
  *    1: [node2, node5],
@@ -72,7 +72,7 @@ class Graph {
     }
 }
 
-console.log('\n GRAPHS - UNIDIRECTED WITH HASH MAP \n--------------------------------------------------\n');
+console.log('\n GRAPHS - UNDIRECTED WITH HASH MAP \n--------------------------------------------------\n');
 
 const graph = new Graph();
 
@@ -90,13 +90,10 @@ graph.addNode(node5);
 
 graph.addEdge(node1, node2);
 graph.addEdge(node1, node5);
-
 graph.addEdge(node2, node5);
 graph.addEdge(node2, node3);
 graph.addEdge(node2, node4);
-
 graph.addEdge(node3, node4);
-
 graph.addEdge(node4, node5);
 
 console.log('\n Graph with nodes and edges: ', graph);
