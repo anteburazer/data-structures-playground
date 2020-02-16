@@ -93,6 +93,8 @@ class LinkedList {
             currentNode = currentNode.next;
         }
 
+        return currentNode.value === value ? true : false;
+
         return false;
     }
 }
