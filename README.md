@@ -1,1 +1,1 @@
-# JavaScript data structures playground
+# Algorithms & data structures in JavaScript
