@@ -85,6 +85,19 @@ class Graph {
         return this.nodes.delete(value);
     }
 
+    addEdge(sourceValue, destinationValue) {
+        const sourceNode = this.addNode(sourceValue);
+        const destinationNode = this.addNode(destinationValue);
+
+        sourceNode.addEdge(destinationValue);
+
+        if (this.edgeDirection === Graph.UNDIRECTED) {
+            destinationNode.addEdge(sourceValue);
+        }
+
+        return [sourceNode, destinationNode];
+    }
+
     removeEdge(sourceValue, destinationValue) {
         const sourceNode = this.nodes.get(sourceValue);
         const destinationNode = this.nodes.get(destinationValue);
@@ -98,6 +111,40 @@ class Graph {
         }
 
         return [sourceNode, destinationNode];
+    }
+
+    breadthFirstSearch(firstNode, callback) {
+        const queue = [firstNode];
+        const visitedNodes = [];
+
+        while (queue.length) {
+            const currentNode = queue.pop();
+
+            if (!visitedNodes.includes(currentNode.value)) {
+                callback(currentNode);
+                visitedNodes.push(currentNode.value);
+                currentNode.getEdges().forEach(node => {
+                    queue.unshift(node);
+                });
+            }
+        }
+
+        // const visited = new Map();
+        // const visitList = new Queue();
+
+        // visitList.add(firstNode);
+
+        // while(!visitList.isEmpty()) {
+        //     const node = visitList.remove();
+
+        //     if(node && !visited.has(node)) {
+        //         callback(node);
+        //         visited.set(node);
+        //         node.getEdges().forEach(adj => {
+        //             visitList.add(adj)
+        //         });
+        //     }
+        // }
     }
 }
 
@@ -116,12 +163,15 @@ graph.addNodesWithEdges(2, 5);
 graph.addNodesWithEdges(3, 4);
 graph.addNodesWithEdges(4, 5);
 
+// console.log('\n Graph with nodes and edges: ', graph);
+
+// graph.removeNode(2);
+// console.log('\n Graph after removing node2: ', cloneDeep(graph));
+
+// graph.removeEdge(1, 5);
+// console.log('\n Graph after removing the edge between node1 and node5: ', cloneDeep(graph));
+
+graph.breadthFirstSearch(graph.nodes.get(1), node => console.log(node));
 console.log('\n Graph with nodes and edges: ', graph);
-
-graph.removeNode(2);
-console.log('\n Graph after removing node2: ', cloneDeep(graph));
-
-graph.removeEdge(1, 5);
-console.log('\n Graph after removing the edge between node1 and node5: ', cloneDeep(graph));
 
 export { Graph, Node };

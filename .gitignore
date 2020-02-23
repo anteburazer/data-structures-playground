@@ -64,4 +64,5 @@ typings/
 .vscode
 
 dist/
+src/exercises/
 .cache/
